@@ -22,6 +22,7 @@ const Navbar = () => {
   return (
     <>
       <Flex
+        py="12"
         dir="row"
         wrap="wrap"
         justifyContent="space-between"
