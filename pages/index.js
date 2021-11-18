@@ -73,25 +73,16 @@ const Home = () => {
           <chakra.img src="/buildingWebsites.svg" width="500px" />
         </ScaleFade>
         <Box>
-          <SlideFade in={true} dir="bottom">
-            <Heading fontSize="6xl" fontWeight="bolder">
-              Who we are.
-            </Heading>
-          </SlideFade>
-          <SlideFade in={true} dir="bottom">
-            <Text fontSize="xl">
-              The Computer Science Club at QSI is a student-run organization
-              <br />
-              filled with students that are passionate about Computer Science.
-              <br />
-              Our goal is to create an inclusive environment where anyone
-              interested
-              <br />
-              in Computer Science can come together and explore the latest
-              <br />
-              technologies or hang out.
-            </Text>
-          </SlideFade>
+          <Heading fontSize="6xl" fontWeight="bolder">
+            Who we are.
+          </Heading>
+          <Text fontSize="xl" width="500px" overflowWrap="break-word">
+            The Computer Science Club at QSI is a student-run organization
+            filled with students that are passionate about Computer Science. Our
+            goal is to create an inclusive environment where anyone interested
+            in Computer Science can come together and explore the latest
+            technologies or hang out.
+          </Text>
         </Box>
       </Flex>
     </Layout>
