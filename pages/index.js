@@ -7,15 +7,16 @@ import {
   Box,
   chakra,
   Flex,
+  Badge,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import Head from "next/head";
 
 const Home = () => {
   const [showAnimation, setShowAnimation] = useState({
     slogan: false,
     bottomText: false,
+    scrollText: false,
   });
 
   useEffect(() => {
@@ -25,6 +26,9 @@ const Home = () => {
     setTimeout(() => {
       setShowAnimation((prev) => ({ ...prev, bottomText: true }));
     }, 700);
+    setTimeout(() => {
+      setShowAnimation((prev) => ({ ...prev, scrollText: true }));
+    }, 1050);
   }, []);
 
   return (
@@ -39,17 +43,35 @@ const Home = () => {
         <VStack mt="15%" alignItems="flex-start">
           <Box>
             <SlideFade in={true} dir="bottom">
-              <Text fontSize="2xl">2021-2022 SCHOOL YEAR</Text>
+              <Text fontSize="2xl">
+                <Badge fontSize="2xl" borderRadius="lg" colorScheme="green">
+                  2021
+                </Badge>
+                -
+                <Badge fontSize="2xl" borderRadius="lg" colorScheme="green">
+                  2022
+                </Badge>{" "}
+                SCHOOL YEAR
+              </Text>
             </SlideFade>
             <SlideFade in={showAnimation.slogan} dir="bottom">
               <Heading fontSize="7xl" fontWeight="bolder">
-                Inquire the <br /> unknown.
+                <chakra.span
+                  borderBottom="1px black solid"
+                  transition="all 10s"
+                >
+                  Inquire
+                </chakra.span>{" "}
+                the <br /> unknown.
               </Heading>
             </SlideFade>
             <SlideFade in={showAnimation.bottomText} dir="bottom">
               <Text fontSize="2xl">
                 Computer Science Club at Queens School of Inquiry
               </Text>
+            </SlideFade>
+            <SlideFade in={showAnimation.scrollText} dir="bottom">
+              <Text fontSize="xl">Scroll down to learn more</Text>
             </SlideFade>
           </Box>
         </VStack>
