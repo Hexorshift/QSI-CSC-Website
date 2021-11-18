@@ -3,16 +3,13 @@ import {
   VStack,
   Text,
   ScaleFade,
-  Fade,
   SlideFade,
-  HStack,
   Box,
   chakra,
   Flex,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Layout from "../components/Layout";
-import { HideBetween, HideDuring, HideOn } from "react-hide-on-scroll";
 
 const Home = () => {
   const [showAnimation, setShowAnimation] = useState({
@@ -30,7 +27,13 @@ const Home = () => {
   }, []);
 
   return (
-    <Layout meta={{ title: "Home" }}>
+    <Layout
+      meta={{
+        title: "Home",
+        description:
+          "The Computer Science Club at QSI is a student-run organization filled with students that are passionate about Computer Science. Our goal is to create an inclusive environment where anyone interested in Computer Science can come together and explore the latest technologies or hang out.",
+      }}
+    >
       <VStack mt="15.5%" alignItems="flex-start">
         <Flex
           dir="row"
@@ -59,40 +62,38 @@ const Home = () => {
           </ScaleFade>
         </Flex>
       </VStack>
-      <HideOn height={200} inverse>
-        <Flex
-          flexDir="row"
-          wrap="wrap"
-          alignItems="center"
-          justifyContent={["center", "center", "center", "space-between"]}
-          mt="13%"
-        >
-          <ScaleFade in={true} initialScale={0.5}>
-            <chakra.img src="/buildingWebsites.svg" width="500px" />
-          </ScaleFade>
-          <Box>
-            <SlideFade in={true} dir="bottom">
-              <Heading fontSize="6xl" fontWeight="bolder">
-                Who we are.
-              </Heading>
-            </SlideFade>
-            <SlideFade in={true} dir="bottom">
-              <Text fontSize="xl">
-                The Computer Science Club at QSI is a student-run organization
-                <br />
-                filled with students that are passionate about Computer Science.
-                <br />
-                Our goal is to create an inclusive environment where anyone
-                interested
-                <br />
-                in Computer Science can come together and explore the latest
-                <br />
-                technologies or hang out.
-              </Text>
-            </SlideFade>
-          </Box>
-        </Flex>
-      </HideOn>
+      <Flex
+        flexDir="row"
+        wrap="wrap"
+        alignItems="center"
+        justifyContent={["center", "center", "center", "space-between"]}
+        mt="13%"
+      >
+        <ScaleFade in={true} initialScale={0.5}>
+          <chakra.img src="/buildingWebsites.svg" width="500px" />
+        </ScaleFade>
+        <Box>
+          <SlideFade in={true} dir="bottom">
+            <Heading fontSize="6xl" fontWeight="bolder">
+              Who we are.
+            </Heading>
+          </SlideFade>
+          <SlideFade in={true} dir="bottom">
+            <Text fontSize="xl">
+              The Computer Science Club at QSI is a student-run organization
+              <br />
+              filled with students that are passionate about Computer Science.
+              <br />
+              Our goal is to create an inclusive environment where anyone
+              interested
+              <br />
+              in Computer Science can come together and explore the latest
+              <br />
+              technologies or hang out.
+            </Text>
+          </SlideFade>
+        </Box>
+      </Flex>
     </Layout>
   );
 };
