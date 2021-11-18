@@ -9,8 +9,37 @@ import {
   Flex,
   Badge,
 } from "@chakra-ui/react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Layout from "../components/Layout";
+import BIRDS from "vanta/dist/vanta.birds.min";
+
+const Vanta = ({ children }) => {
+  const [vantaEffect, setVantaEffect] = useState(0);
+  const myRef = useRef(null);
+
+  useEffect(() => {
+    if (!vantaEffect) {
+      setVantaEffect(
+        BIRDS({
+          el: myRef.current,
+          minHeight: window.innerHeight,
+          minWidth: window.innerWidth,
+          backgroundColor: 0xffffff,
+          forceAnimate: true,
+        })
+      );
+    }
+    return () => {
+      if (vantaEffect) vantaEffect.destroy();
+    };
+  }, [vantaEffect]);
+
+  return (
+    <Box ref={myRef} zIndex="-1">
+      {children}
+    </Box>
+  );
+};
 
 const Home = () => {
   const [showAnimation, setShowAnimation] = useState({
@@ -33,6 +62,7 @@ const Home = () => {
 
   return (
     <>
+      <Vanta />
       <Layout
         meta={{
           title: "Home",
@@ -40,7 +70,7 @@ const Home = () => {
             "The Computer Science Club at QSI is a student-run organization filled with students that are passionate about Computer Science. Our goal is to create an inclusive environment where anyone interested in Computer Science can come together and explore the latest technologies or hang out.",
         }}
       >
-        <VStack mt="15%" alignItems="flex-start">
+        <VStack mt={["1em", "5em", "8em", "10em"]} alignItems="flex-start">
           <Box>
             <SlideFade in={true} dir="bottom">
               <Text fontSize="2xl">
@@ -56,10 +86,7 @@ const Home = () => {
             </SlideFade>
             <SlideFade in={showAnimation.slogan} dir="bottom">
               <Heading fontSize="7xl" fontWeight="bolder">
-                <chakra.span
-                  borderBottom="1px black solid"
-                  transition="all 10s"
-                >
+                <chakra.span borderBottom="1px black solid">
                   Inquire
                 </chakra.span>{" "}
                 the <br /> unknown.
@@ -80,14 +107,13 @@ const Home = () => {
           wrap="wrap"
           alignItems="center"
           justifyContent={["center", "center", "center", "space-between"]}
-          mt="25%"
+          mt={["15em", "18em", "20em", "25em"]}
         >
-          <ScaleFade in={true} initialScale={0.5}>
-            <chakra.img src="/buildingWebsites.svg" width="500px" />
-          </ScaleFade>
+          <chakra.img src="/buildingWebsites.svg" width="500px" />
           <Box>
             <Heading fontSize="6xl" fontWeight="bolder">
-              Who we are.
+              <chakra.span borderBottom="1px black solid">Who</chakra.span> we
+              are.
             </Heading>
             <Text fontSize="xl" overflowWrap="break-word">
               The Computer Science Club at QSI is a student-run organization
@@ -102,6 +128,33 @@ const Home = () => {
               technologies or hang out.
             </Text>
           </Box>
+        </Flex>
+        <Flex
+          flexDir="row"
+          wrap="wrap-reverse"
+          alignItems="center"
+          justifyContent={["center", "center", "center", "space-between"]}
+          mt="8em"
+        >
+          <Box>
+            <Heading fontSize="6xl" fontWeight="bolder">
+              <chakra.span borderBottom="1px solid black">What</chakra.span> we
+              do.
+            </Heading>
+            <Text fontSize="xl" overflowWrap="break-word">
+              At the CS Club, we plan on learning front-end development
+              <br />
+              using HTML, CSS, JavaScript and React.js. We also plan on
+              <br />
+              learning back-end development using Node.js (A JavaScript
+              runtime).
+              <br />
+              We will watch movies or play games occasionally! You don't
+              <br />
+              have to be an expert to join us.
+            </Text>
+          </Box>
+          <chakra.img src="/technologies.svg" width="500px" />
         </Flex>
       </Layout>
     </>

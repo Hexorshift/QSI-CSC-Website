@@ -17,3 +17,7 @@ body {
 ::-webkit-scrollbar {
   display: none;
 }
+
+::selection {
+  background-color: #d12147 !important;
+}
