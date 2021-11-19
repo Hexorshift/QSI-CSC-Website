@@ -10,13 +10,13 @@ import {
 import { useEffect, useState, useRef } from "react";
 import Layout from "../components/Layout";
 import BIRDS from "vanta/dist/vanta.birds.min";
+import Typewriter from "typewriter-effect";
 
 const Vanta = ({ children }) => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const myRef = useRef(null);
 
   useEffect(() => {
-    const colors = [0xffffff];
     if (!vantaEffect) {
       setVantaEffect(
         BIRDS({
@@ -69,17 +69,22 @@ const Home = () => {
             "The Computer Science Club at QSI is a student-run organization filled with students that are passionate about Computer Science. Our goal is to create an inclusive environment where anyone interested in Computer Science can come together and explore the latest technologies or hang out.",
         }}
       >
-        <VStack mt={["1em", "5em", "8em", "10em"]} alignItems="flex-start">
+        <VStack my={["25%", "35%", "35%", "10%"]} alignItems="flex-start">
           <Box>
             <SlideFade in={true} dir="bottom">
               <Text fontSize="2xl">2021 - 2022 SCHOOL YEAR</Text>
             </SlideFade>
             <SlideFade in={showAnimation.slogan} dir="bottom">
-              <Heading fontSize="7xl" fontWeight="bolder">
-                <chakra.span borderBottom="1px black solid">
-                  Inquire
-                </chakra.span>{" "}
-                the <br /> unknown.
+              <Heading fontSize="7xl" fontWeight="extrabold">
+                <Typewriter
+                  options={{
+                    strings:
+                      '<span style="border-bottom: 1px black solid">Build</span><br/> amazing things.',
+                    autoStart: true,
+                    loop: false,
+                    cursor: "_",
+                  }}
+                />
               </Heading>
             </SlideFade>
             <SlideFade in={showAnimation.bottomText} dir="bottom">
@@ -93,15 +98,20 @@ const Home = () => {
           </Box>
         </VStack>
         <Flex
+          mt={["50%", "95%", "95%", "35%"]}
           flexDir="row"
           wrap="wrap"
           alignItems="center"
-          justifyContent={["center", "center", "center", "space-between"]}
-          mt={["15em", "20em", "35em", "25em"]}
+          justifyContent={["center", "center", "center", "space-around"]}
         >
           <chakra.img src="/buildingWebsites.svg" width="500px" />
           <Box width={["100%", "100%", "50%", "50%"]}>
-            <Heading fontSize="6xl" fontWeight="bolder">
+            <Heading
+              fontSize="6xl"
+              fontWeight="bolder"
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+            >
               <chakra.span borderBottom="1px black solid">Who</chakra.span> we
               are.
             </Heading>
@@ -118,11 +128,16 @@ const Home = () => {
           flexDir="row"
           wrap="wrap-reverse"
           alignItems="center"
-          justifyContent={["center", "center", "center", "space-between"]}
+          justifyContent={["center", "center", "center", "space-around"]}
           mt="5em"
         >
           <Box width={["100%", "100%", "50%", "50%"]}>
-            <Heading fontSize="6xl" fontWeight="bolder">
+            <Heading
+              fontSize="6xl"
+              fontWeight="bolder"
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+            >
               <chakra.span borderBottom="1px solid black">What</chakra.span> we
               do.
             </Heading>
