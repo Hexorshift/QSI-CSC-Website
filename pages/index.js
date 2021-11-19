@@ -151,6 +151,41 @@ const Home = () => {
           </Box>
           <chakra.img src="/technologies.svg" width="500px" />
         </Flex>
+        <Flex
+          flexDir="row"
+          wrap="wrap-reverse"
+          alignItems="center"
+          justifyContent={["center", "center", "center", "space-around"]}
+          mt="5em"
+        >
+          <Box width={["100%", "100%", "40%", "40%"]}>
+            <iframe
+              src="https://docs.google.com/forms/d/e/1FAIpQLScVjSf7rGyF_DYVhKInzmC8Rejg9AJuK7f8iWpLko1d8jpzlQ/viewform?embedded=true"
+              width="100%"
+              height="500"
+              frameBorder="0"
+              marginHeight="0"
+              marginWidth="0"
+            >
+              Loading…
+            </iframe>
+          </Box>
+
+          <Box width={["100%", "100%", "50%", "50%"]}>
+            <Heading
+              fontSize="6xl"
+              fontWeight="bolder"
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+            >
+              Interested?
+            </Heading>
+            <Text fontSize="xl" overflowWrap="break-word">
+              Fill out this form, and you will become a part of the QSI CS
+              community in no time!
+            </Text>
+          </Box>
+        </Flex>
       </Layout>
     </>
   );
