@@ -2,12 +2,10 @@ import {
   Heading,
   VStack,
   Text,
-  ScaleFade,
   SlideFade,
   Box,
   chakra,
   Flex,
-  Badge,
 } from "@chakra-ui/react";
 import { useEffect, useState, useRef } from "react";
 import Layout from "../components/Layout";
@@ -18,6 +16,7 @@ const Vanta = ({ children }) => {
   const myRef = useRef(null);
 
   useEffect(() => {
+    const colors = [0xffffff];
     if (!vantaEffect) {
       setVantaEffect(
         BIRDS({
@@ -73,16 +72,7 @@ const Home = () => {
         <VStack mt={["1em", "5em", "8em", "10em"]} alignItems="flex-start">
           <Box>
             <SlideFade in={true} dir="bottom">
-              <Text fontSize="2xl">
-                <Badge fontSize="2xl" borderRadius="lg" colorScheme="green">
-                  2021
-                </Badge>
-                -
-                <Badge fontSize="2xl" borderRadius="lg" colorScheme="green">
-                  2022
-                </Badge>{" "}
-                SCHOOL YEAR
-              </Text>
+              <Text fontSize="2xl">2021 - 2022 SCHOOL YEAR</Text>
             </SlideFade>
             <SlideFade in={showAnimation.slogan} dir="bottom">
               <Heading fontSize="7xl" fontWeight="bolder">
@@ -107,25 +97,20 @@ const Home = () => {
           wrap="wrap"
           alignItems="center"
           justifyContent={["center", "center", "center", "space-between"]}
-          mt={["15em", "18em", "20em", "25em"]}
+          mt={["15em", "20em", "35em", "25em"]}
         >
           <chakra.img src="/buildingWebsites.svg" width="500px" />
-          <Box>
+          <Box width={["100%", "100%", "50%", "50%"]}>
             <Heading fontSize="6xl" fontWeight="bolder">
               <chakra.span borderBottom="1px black solid">Who</chakra.span> we
               are.
             </Heading>
             <Text fontSize="xl" overflowWrap="break-word">
               The Computer Science Club at QSI is a student-run organization
-              <br />
               filled with students that are passionate about Computer Science.
-              <br />
               Our goal is to create an inclusive environment where anyone
-              interested
-              <br />
-              in Computer Science can come together and explore the latest
-              <br />
-              technologies or hang out.
+              interested in Computer Science can come together and explore the
+              latest technologies or hang out.
             </Text>
           </Box>
         </Flex>
@@ -134,24 +119,19 @@ const Home = () => {
           wrap="wrap-reverse"
           alignItems="center"
           justifyContent={["center", "center", "center", "space-between"]}
-          mt="8em"
+          mt="5em"
         >
-          <Box>
+          <Box width={["100%", "100%", "50%", "50%"]}>
             <Heading fontSize="6xl" fontWeight="bolder">
               <chakra.span borderBottom="1px solid black">What</chakra.span> we
               do.
             </Heading>
             <Text fontSize="xl" overflowWrap="break-word">
-              At the CS Club, we plan on learning front-end development
-              <br />
-              using HTML, CSS, JavaScript and React.js. We also plan on
-              <br />
-              learning back-end development using Node.js (A JavaScript
-              runtime).
-              <br />
-              We will watch movies or play games occasionally! You don't
-              <br />
-              have to be an expert to join us.
+              At the CS Club, we plan on learning front-end development using
+              HTML, CSS, JavaScript and React.js. We also plan on learning
+              back-end development using Node.js (A JavaScript runtime). We will
+              watch movies or play games occasionally! You don't have to be an
+              expert to join us.
             </Text>
           </Box>
           <chakra.img src="/technologies.svg" width="500px" />

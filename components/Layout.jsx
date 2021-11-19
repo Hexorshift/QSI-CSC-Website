@@ -15,6 +15,16 @@ const Layout = ({ meta, children }) => {
         />
         <meta name="author" content="QSI Computer Science Club Members" />
         <meta name="theme-color" content="#D12147" />
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content={`QSI Computer Science Club | ${meta.title}`}
+        />
+        <meta property="og:description" content={meta.description} />
+        <meta
+          property="og:image"
+          content="https://i.ibb.co/FX0BbHX/QSI-CSC.png"
+        ></meta>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
       </Head>
       <Box maxW="1480px" mx="auto" px="3" pb="8">
