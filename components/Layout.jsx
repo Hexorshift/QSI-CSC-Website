@@ -25,6 +25,16 @@ const Layout = ({ meta, children }) => {
           property="og:image"
           content="https://i.ibb.co/FX0BbHX/QSI-CSC.png"
         ></meta>
+        <meta
+          name="twitter:title"
+          content={`QSI Computer Science Club | ${meta.title}`}
+        />
+        <meta name="twitter:description" content={meta.description} />
+        <meta
+          name="twitter:image"
+          content="https://i.ibb.co/FX0BbHX/QSI-CSC.png"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
       </Head>
       <Box maxW="1480px" mx="auto" px="3" pb="8">
