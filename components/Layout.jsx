@@ -7,7 +7,7 @@ const Layout = ({ meta, children }) => {
   return (
     <>
       <Head>
-        <title>QSI Computer Science Club | {meta.title}</title>
+        <title>{meta.title} • QSI Computer Science Club</title>
         <meta name="description" content={meta.description} />
         <meta
           name="keywords"
@@ -18,21 +18,21 @@ const Layout = ({ meta, children }) => {
         <meta property="og:type" content="website" />
         <meta
           property="og:title"
-          content={`QSI Computer Science Club | ${meta.title}`}
+          content={`${meta.title} • QSI Computer Science Club`}
         />
         <meta property="og:description" content={meta.description} />
         <meta
           property="og:image"
-          content="https://i.ibb.co/FX0BbHX/QSI-CSC.png"
+          content="https://i.ibb.co/LJWLGtt/QSI-CSC-BANNER.png"
         ></meta>
         <meta
           name="twitter:title"
-          content={`QSI Computer Science Club | ${meta.title}`}
+          content={` ${meta.title} • QSI Computer Science Club`}
         />
         <meta name="twitter:description" content={meta.description} />
         <meta
           name="twitter:image"
-          content="https://i.ibb.co/FX0BbHX/QSI-CSC.png"
+          content="https://i.ibb.co/LJWLGtt/QSI-CSC-BANNER.png"
         />
         <meta name="twitter:card" content="summary_large_image" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>

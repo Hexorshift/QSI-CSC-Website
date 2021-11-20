@@ -10,6 +10,7 @@ import {
   DrawerContent,
   VStack,
   Box,
+  HStack,
 } from "@chakra-ui/react";
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import Link from "next/link";
@@ -66,16 +67,6 @@ const Navbar = () => {
     },
   ]);
 
-  const renderLinks = () => {
-    return links.map((link, index) => {
-      return (
-        <Link key={index} href={link.url} passHref>
-          <chakra.a>{link.name}</chakra.a>
-        </Link>
-      );
-    });
-  };
-
   return (
     <>
       <Flex
@@ -86,16 +77,19 @@ const Navbar = () => {
         justifyContent="space-between"
         alignItems="center"
       >
-        <Link href="/" passHref>
-          <Heading
-            as={chakra.a}
-            fontSize="xl"
-            fontWeight="thin"
-            cursor="pointer"
-          >
-            The QSI CS Club
-          </Heading>
-        </Link>
+        <HStack>
+          <chakra.img src="/logoTransparent.png" width="64px" />
+          <Link href="/" passHref>
+            <Heading
+              as={chakra.a}
+              fontSize="xl"
+              fontWeight="thin"
+              cursor="pointer"
+            >
+              The QSI CS Club
+            </Heading>
+          </Link>
+        </HStack>
         <IconButton
           background="transparent"
           onClick={onToggle}
