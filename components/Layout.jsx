@@ -37,8 +37,8 @@ const Layout = ({ meta, children }) => {
         <meta name="twitter:card" content="summary_large_image" />
         <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
       </Head>
+      <Navbar />
       <Box maxW="1366px" mx="auto" px="3">
-        <Navbar />
         {children}
         <Footer />
       </Box>

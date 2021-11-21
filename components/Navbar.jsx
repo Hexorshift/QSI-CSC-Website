@@ -69,7 +69,15 @@ const Navbar = () => {
 
   return (
     <>
-      <Flex pt="3em" dir="row" wrap="wrap" justifyContent="space-between">
+      <Flex
+        pr="3"
+        pt="3em"
+        maxW="1366px"
+        mx="auto"
+        dir="row"
+        justifyContent="space-between"
+        wrap="wrap"
+      >
         <HStack>
           <chakra.img src="/logoTransparent.png" width="64px" />
           <Link href="/" passHref>
@@ -84,7 +92,6 @@ const Navbar = () => {
           </Link>
         </HStack>
         <IconButton
-          background="transparent"
           onClick={onToggle}
           fontSize="2xl"
           icon={<HamburgerIcon />}
@@ -92,36 +99,22 @@ const Navbar = () => {
       </Flex>
       <Drawer
         isOpen={isOpen}
-        placement="top"
+        placement="right"
         size="full"
         returnFocusOnClose={false}
       >
         <DrawerContent>
           <Vanta />
-          <DrawerBody>
-            <Flex
-              maxW="1366px"
-              mx="auto"
-              pt="2.5em"
-              px="3"
-              justifyContent="flex-end"
-            >
-              <IconButton
-                background="transparent"
-                onClick={onToggle}
-                fontSize="md"
-                icon={<CloseIcon />}
-              />
-            </Flex>
-            <Flex
-              maxW="1366px"
-              mx="auto"
-              my="12%"
-              px="3"
-              justifyContent="flex-start"
-              alignItems="center"
-            >
-              <VStack alignItems="flex-start">
+          <DrawerBody pt="3em">
+            <Flex flexDir="column" maxW="1366px" mx="auto">
+              <Box>
+                <IconButton
+                  onClick={onToggle}
+                  fontSize="md"
+                  icon={<CloseIcon />}
+                />
+              </Box>
+              <VStack alignItems="flex-start" my="15%">
                 {links.map((link, index) => {
                   return (
                     <Link key={index} href={link.url} passHref>
