@@ -69,7 +69,7 @@ const Home = () => {
             "The Computer Science Club at QSI is a student-run organization filled with students that are passionate about Computer Science. Our goal is to create an inclusive environment where anyone interested in Computer Science can come together and explore the latest technologies or hang out.",
         }}
       >
-        <VStack my={["25%", "35%", "35%", "10%"]} alignItems="flex-start">
+        <VStack my="7em" alignItems="flex-start">
           <Box>
             <SlideFade in={true} dir="bottom">
               <Text fontSize="2xl">2021 - 2022 SCHOOL YEAR</Text>

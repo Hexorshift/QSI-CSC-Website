@@ -69,14 +69,7 @@ const Navbar = () => {
 
   return (
     <>
-      <Flex
-        pt="12"
-        pb="12"
-        dir="row"
-        wrap="wrap"
-        justifyContent="space-between"
-        alignItems="center"
-      >
+      <Flex pt="3em" dir="row" wrap="wrap" justifyContent="space-between">
         <HStack>
           <chakra.img src="/logoTransparent.png" width="64px" />
           <Link href="/" passHref>
@@ -86,7 +79,7 @@ const Navbar = () => {
               fontWeight="thin"
               cursor="pointer"
             >
-              The QSI CS Club
+              QSI CS Club
             </Heading>
           </Link>
         </HStack>
@@ -103,17 +96,15 @@ const Navbar = () => {
         size="full"
         returnFocusOnClose={false}
       >
-        <DrawerOverlay />
         <DrawerContent>
           <Vanta />
-          <DrawerBody padding="0" margin="0">
+          <DrawerBody>
             <Flex
-              maxW="1480px"
+              maxW="1366px"
               mx="auto"
-              my="12"
+              pt="2.5em"
               px="3"
               justifyContent="flex-end"
-              alignItems="center"
             >
               <IconButton
                 background="transparent"
@@ -123,7 +114,7 @@ const Navbar = () => {
               />
             </Flex>
             <Flex
-              maxW="1480px"
+              maxW="1366px"
               mx="auto"
               my="12%"
               px="3"
