@@ -10,11 +10,27 @@ import {
 import { useEffect, useState, useRef } from "react";
 import Layout from "../components/Layout";
 import BIRDS from "vanta/dist/vanta.birds.min";
+import GLOBE from "vanta/dist/vanta.globe.min";
 import Typewriter from "typewriter-effect";
+
+const randomInteger = (min, max) => {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+};
 
 const Vanta = ({ children }) => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const myRef = useRef(null);
+  /*const [models] = useState([
+    GLOBE({
+      el: myRef.current,
+      minHeight: window.innerHeight,
+      minWidth: window.innerWidth,
+      color: 0xd12147,
+      color2: 0x0,
+      backgroundColor: 0xffffff,
+      forceAnimate: true,
+    }),
+  ]);*/
 
   useEffect(() => {
     if (!vantaEffect) {
@@ -69,7 +85,7 @@ const Home = () => {
             "The Computer Science Club at QSI is a student-run organization filled with students that are passionate about Computer Science. Our goal is to create an inclusive environment where anyone interested in Computer Science can come together and explore the latest technologies or hang out.",
         }}
       >
-        <VStack my="11em" alignItems="flex-start">
+        <Flex alignItems="center" height="80vh">
           <Box>
             <SlideFade in={true} dir="bottom">
               <Text fontSize="2xl">2021 - 2022 SCHOOL YEAR</Text>
@@ -96,13 +112,13 @@ const Home = () => {
               <Text fontSize="xl">Scroll down to learn more</Text>
             </SlideFade>
           </Box>
-        </VStack>
+        </Flex>
         <Flex
-          mt={["50%", "95%", "95%", "30%"]}
+          mt="7em"
           flexDir="row"
           wrap="wrap"
           alignItems="center"
-          justifyContent={["center", "center", "center", "space-around"]}
+          justifyContent="space-between"
         >
           <chakra.img src="/buildingWebsites.svg" width="500px" />
           <Box width={["100%", "100%", "50%", "50%"]}>
@@ -128,8 +144,7 @@ const Home = () => {
           flexDir="row"
           wrap="wrap-reverse"
           alignItems="center"
-          justifyContent={["center", "center", "center", "space-around"]}
-          mt="5em"
+          justifyContent="space-between"
         >
           <Box width={["100%", "100%", "50%", "50%"]}>
             <Heading
@@ -155,10 +170,9 @@ const Home = () => {
           flexDir="row"
           wrap="wrap-reverse"
           alignItems="center"
-          justifyContent={["center", "center", "center", "space-around"]}
-          mt="5em"
+          justifyContent="space-between"
         >
-          <Box width={["100%", "100%", "40%", "40%"]}>
+          <Box width={["100%", "100%", "45%", "45%"]}>
             <iframe
               src="https://docs.google.com/forms/d/e/1FAIpQLScVjSf7rGyF_DYVhKInzmC8Rejg9AJuK7f8iWpLko1d8jpzlQ/viewform?embedded=true"
               width="100%"
@@ -170,7 +184,6 @@ const Home = () => {
               Loading…
             </iframe>
           </Box>
-
           <Box width={["100%", "100%", "50%", "50%"]}>
             <Heading
               fontSize="6xl"

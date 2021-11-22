@@ -15,37 +15,6 @@ import {
 import { CloseIcon, HamburgerIcon } from "@chakra-ui/icons";
 import Link from "next/link";
 import { useState, useRef, useEffect } from "react";
-import GLOBE from "vanta/dist/vanta.globe.min";
-
-const Vanta = ({ children }) => {
-  const [vantaEffect, setVantaEffect] = useState(0);
-  const myRef = useRef(null);
-
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        GLOBE({
-          el: myRef.current,
-          minHeight: window.innerHeight,
-          minWidth: window.innerWidth,
-          color: 0xd12147,
-          color2: 0x0,
-          backgroundColor: 0xffffff,
-          forceAnimate: true,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-
-  return (
-    <Box ref={myRef} zIndex="-1">
-      {children}
-    </Box>
-  );
-};
 
 const Navbar = () => {
   const { onToggle, isOpen } = useDisclosure();
@@ -56,8 +25,8 @@ const Navbar = () => {
       external: false,
     },
     {
-      name: "Resources",
-      url: "/resources",
+      name: "Members",
+      url: "/members",
       external: false,
     },
     {
@@ -69,63 +38,63 @@ const Navbar = () => {
 
   return (
     <>
-      <Flex
-        pr="3"
-        pt="3em"
-        maxW="1366px"
-        mx="auto"
-        dir="row"
-        justifyContent="space-between"
-        wrap="wrap"
-      >
-        <HStack>
-          <chakra.img src="/logoTransparent.png" width="64px" />
+      <Flex pt="3em" alignItems="center" justifyContent="space-between">
+        <HStack alignItems="center">
+          <chakra.img src="/logoTransparent.png" width="48px" height="48px" />
           <Link href="/" passHref>
-            <Heading
-              as={chakra.a}
-              fontSize="xl"
-              fontWeight="thin"
-              cursor="pointer"
-            >
+            <Heading as={chakra.a} fontSize="xl" fontWeight="semibold">
               QSI CS Club
             </Heading>
           </Link>
         </HStack>
+        <HStack spacing="8" display={["none", "none", "flex", "flex"]}>
+          {links.map((link, index) => {
+            return (
+              <Link key={index} href={link.url} passHref>
+                <Heading as={chakra.a} fontSize="xl" fontWeight="semibold">
+                  {link.name}
+                </Heading>
+              </Link>
+            );
+          })}
+        </HStack>
         <IconButton
-          onClick={onToggle}
-          fontSize="2xl"
+          display={["flex", "flex", "none", "none"]}
           icon={<HamburgerIcon />}
+          background="transparent"
+          fontSize="2xl"
+          onClick={onToggle}
         />
       </Flex>
       <Drawer
+        padding="0"
         isOpen={isOpen}
-        placement="right"
-        size="full"
         returnFocusOnClose={false}
+        size="full"
+        placement="right"
       >
-        <DrawerContent>
-          <Vanta />
-          <DrawerBody pt="3em">
-            <Flex flexDir="column" maxW="1366px" mx="auto">
-              <Box>
-                <IconButton
-                  onClick={onToggle}
-                  fontSize="md"
-                  icon={<CloseIcon />}
-                />
-              </Box>
-              <VStack alignItems="flex-start" my="15%">
-                {links.map((link, index) => {
-                  return (
-                    <Link key={index} href={link.url} passHref>
-                      <Heading as={chakra.a} cursor="pointer">
-                        {link.name}
-                      </Heading>
-                    </Link>
-                  );
-                })}
-              </VStack>
+        <DrawerOverlay bgColor="#D12147" />
+        <DrawerContent pt="3.28em" px="2">
+          <DrawerBody p="0">
+            <Flex justifyContent="flex-end">
+              <IconButton
+                icon={<CloseIcon />}
+                background="transparent"
+                fontSize="sm"
+                onClick={onToggle}
+              />
             </Flex>
+            <VStack alignItems="flex-start" my="15%">
+              {links.map((link, index) => {
+                return (
+                  <Link key={index} href={link.url} passHref>
+                    <Heading as={chakra.a} fontWeight="semibold">
+                      {link.name}
+                    </Heading>
+                  </Link>
+                );
+              })}
+            </VStack>
           </DrawerBody>
         </DrawerContent>
       </Drawer>
