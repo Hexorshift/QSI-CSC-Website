@@ -19,7 +19,9 @@ const Projects = () => {
           "Check out the projects we built at the QSI Computer Science Club!",
       }}
     >
-      <Heading>Projects are coming soon!</Heading>
+      <Heading textAlign="center" fontSize="5xl">
+        Projects are coming soon!
+      </Heading>
     </Layout>
   );
 };

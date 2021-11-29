@@ -2,7 +2,7 @@ import { Box, Text } from "@chakra-ui/react";
 
 const Layout = () => {
   return (
-    <Box mt="8">
+    <Box my="8" textAlign="center">
       <Text>Built with ❤️ by QSI CS Club</Text>
     </Box>
   );

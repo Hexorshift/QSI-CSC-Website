@@ -6,11 +6,12 @@ import {
   Box,
   chakra,
   Flex,
+  Tooltip,
 } from "@chakra-ui/react";
 import { useEffect, useState, useRef } from "react";
 import Layout from "../components/Layout";
 import BIRDS from "vanta/dist/vanta.birds.min";
-import GLOBE from "vanta/dist/vanta.globe.min";
+// import GLOBE from "vanta/dist/vanta.globe.min";
 import Typewriter from "typewriter-effect";
 
 const randomInteger = (min, max) => {
@@ -62,6 +63,13 @@ const Home = () => {
     bottomText: false,
     scrollText: false,
   });
+  const [socialMedia] = useState([
+    {
+      name: "Discord Server",
+      logo: "https://logodownload.org/wp-content/uploads/2017/11/discord-logo-4-1.png",
+      url: "https://discord.gg/3aBw4ghwZe",
+    },
+  ]);
 
   useEffect(() => {
     setTimeout(() => {
@@ -198,6 +206,45 @@ const Home = () => {
               community in no time!
             </Text>
           </Box>
+        </Flex>
+        <Flex
+          flexDir="row"
+          wrap="wrap-reverse"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          <Box width={["100%", "100%", "50%", "50%"]}>
+            <Heading
+              fontSize="6xl"
+              fontWeight="bolder"
+              bgGradient="linear(to-l, #7928CA, #FF0080)"
+              bgClip="text"
+            >
+              Hit us up
+            </Heading>
+            <Flex>
+              {socialMedia.map((socialMedia, index) => {
+                return (
+                  <Box
+                    as={chakra.a}
+                    href={socialMedia.url}
+                    target="_blank"
+                    key={index}
+                    cursor="pointer"
+                    shadow="lg"
+                    p="2"
+                    border={`1px solid #EDF2F7`}
+                    borderRadius="md"
+                  >
+                    <Tooltip label={socialMedia.name}>
+                      <chakra.img src={socialMedia.logo} width="64px" />
+                    </Tooltip>
+                  </Box>
+                );
+              })}
+            </Flex>
+          </Box>
+          <chakra.img src="/socialMedia.svg" width="500px" />
         </Flex>
       </Layout>
     </>

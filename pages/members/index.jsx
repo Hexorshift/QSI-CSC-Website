@@ -5,6 +5,7 @@ import {
   Box,
   Flex,
   ScaleFade,
+  chakra,
 } from "@chakra-ui/react";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
@@ -17,6 +18,7 @@ export async function getStaticProps(context) {
 
   return {
     props: { members: data },
+    revalidate: 60 * 2,
   };
 }
 
@@ -56,7 +58,7 @@ const Members = ({ members }) => {
           <Text fontSize="2xl">Meet the 2021-2022 members!</Text>
         </SlideFade>
       </Box>
-      <Flex justifyContent="center" wrap="wrap">
+      <Flex justifyContent="center" wrap="wrap" width="100%">
         {members
           .sort((a, b) => (a.name < b.name ? -1 : 1))
           .map((member, index) => {
@@ -66,15 +68,23 @@ const Members = ({ members }) => {
                   border={`1px solid #EDF2F7`}
                   borderRadius="md"
                   flexDir="column"
-                  alignItems="center"
+                  alignItems="flex-start"
                   justifyContent="center"
-                  m="3"
-                  width="300px"
-                  shadow="md"
-                  p="3"
+                  m="5"
+                  width="280px"
+                  shadow="xl"
+                  overflow="hidden"
                 >
-                  <Heading fontSize="2xl">{member.name}</Heading>
-                  <Text fontSize="xl">{member.year}</Text>
+                  <chakra.img
+                    src={member.avatar}
+                    alt="memberAvatar"
+                    width="280px"
+                    height="280px"
+                  />
+                  <Box pt="2" px="3">
+                    <Heading fontSize="2xl">{member.name}</Heading>
+                    <Text fontSize="xl">{member.year}</Text>
+                  </Box>
                 </Flex>
               </ScaleFade>
             );
