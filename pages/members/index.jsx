@@ -6,7 +6,11 @@ import {
   Flex,
   ScaleFade,
   chakra,
+  IconButton,
+  VStack,
+  Tooltip,
 } from "@chakra-ui/react";
+import { ImSortAlphaAsc, ImSortAlphaDesc } from "react-icons/im";
 import { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 
@@ -18,7 +22,7 @@ export async function getStaticProps(context) {
 
   return {
     props: { members: data },
-    revalidate: 60 * 2,
+    revalidate: 60 * 1,
   };
 }
 
@@ -28,6 +32,7 @@ const Members = ({ members }) => {
     bottomText: false,
     members: false,
   });
+  const [order, setOrder] = useState("Ascending");
 
   useEffect(() => {
     setTimeout(() => {
@@ -48,19 +53,50 @@ const Members = ({ members }) => {
         description: "The QSI CS Club members.",
       }}
     >
-      <Box textAlign="center">
-        <SlideFade in={showAnimation.topText} dir="bottom">
-          <Heading fontSize="5xl" textAlign="center">
-            Welcome to the QSI CS Club!
-          </Heading>
-        </SlideFade>
-        <SlideFade in={showAnimation.bottomText} dir="bottom">
-          <Text fontSize="2xl">Meet the 2021-2022 members!</Text>
-        </SlideFade>
-      </Box>
-      <Flex justifyContent="center" wrap="wrap" width="100%">
+      <Flex justifyContent="space-between" mb="3">
+        <Box>
+          <SlideFade in={showAnimation.topText} dir="bottom">
+            <Heading fontSize="5xl">Welcome to the QSI CS Club!</Heading>
+          </SlideFade>
+          <SlideFade in={showAnimation.bottomText} dir="bottom">
+            <Text fontSize="2xl">Meet the 2021-2022 members!</Text>
+          </SlideFade>
+        </Box>
+        <VStack alignItems="flex-end">
+          <Tooltip
+            placement="top-start"
+            label={`Sort name by ${
+              order === "Ascending" ? "descending" : "ascending"
+            } order`}
+          >
+            <IconButton
+              fontSize="2xl"
+              onClick={() => {
+                order === "Ascending"
+                  ? setOrder("Descending")
+                  : setOrder("Ascending");
+              }}
+              icon={
+                order === "Ascending" ? <ImSortAlphaDesc /> : <ImSortAlphaAsc />
+              }
+            />
+          </Tooltip>
+          <Text fontSize="xl">{members.length} total members</Text>
+        </VStack>
+      </Flex>
+      <Flex
+        justifyContent={["center", "center", "flex-start", "flex-start"]}
+        wrap="wrap"
+        width="100%"
+      >
         {members
-          .sort((a, b) => (a.name < b.name ? -1 : 1))
+          .sort((a, b) => {
+            if (order === "Ascending") {
+              return a.name < b.name ? -1 : 1;
+            } else {
+              return a.name < b.name ? 1 : -1;
+            }
+          })
           .map((member, index) => {
             return (
               <ScaleFade key={index} in={showAnimation.members}>
@@ -70,10 +106,11 @@ const Members = ({ members }) => {
                   flexDir="column"
                   alignItems="flex-start"
                   justifyContent="center"
-                  m="5"
                   width="280px"
                   shadow="xl"
                   overflow="hidden"
+                  mr="3.5em"
+                  mb="8"
                 >
                   <chakra.img
                     src={member.avatar}

@@ -22,7 +22,7 @@ const Layout = ({ meta, children }) => {
       </Head>
       <Box maxW="1366px" mx="auto" px="2">
         <Navbar />
-        {children}
+        <Box pt="5">{children}</Box>
         <Footer />
       </Box>
     </>

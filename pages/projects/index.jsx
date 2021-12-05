@@ -19,9 +19,7 @@ const Projects = () => {
           "Check out the projects we built at the QSI Computer Science Club!",
       }}
     >
-      <Heading textAlign="center" fontSize="5xl">
-        Projects are coming soon!
-      </Heading>
+      <Heading fontSize="5xl">Projects are coming soon!</Heading>
     </Layout>
   );
 };

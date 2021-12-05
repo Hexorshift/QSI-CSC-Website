@@ -65,6 +65,11 @@ const Home = () => {
   });
   const [socialMedia] = useState([
     {
+      name: "Instagram",
+      logo: "https://assets.stickpng.com/images/580b57fcd9996e24bc43c521.png",
+      url: "https://www.instagram.com/qsicsclub/",
+    },
+    {
       name: "Discord Server",
       logo: "https://logodownload.org/wp-content/uploads/2017/11/discord-logo-4-1.png",
       url: "https://discord.gg/3aBw4ghwZe",
@@ -149,6 +154,7 @@ const Home = () => {
           </Box>
         </Flex>
         <Flex
+          mt="3em"
           flexDir="row"
           wrap="wrap-reverse"
           alignItems="center"
@@ -165,16 +171,17 @@ const Home = () => {
               do.
             </Heading>
             <Text fontSize="xl" overflowWrap="break-word">
-              At the CS Club, we plan on learning front-end development using
-              HTML, CSS, JavaScript and React.js. We also plan on learning
-              back-end development using Node.js (A JavaScript runtime). We will
-              watch movies or play games occasionally! You don't have to be an
-              expert to join us.
+              This year, we plan on learning front-end development using HTML,
+              CSS, JavaScript and React.js. We also plan on learning back-end
+              development using Node.js (A JavaScript runtime). We will watch
+              movies or play games occasionally! You don't have to be an expert
+              to join us.
             </Text>
           </Box>
           <chakra.img src="/technologies.svg" width="500px" />
         </Flex>
         <Flex
+          mt="3em"
           flexDir="row"
           wrap="wrap-reverse"
           alignItems="center"
@@ -208,6 +215,7 @@ const Home = () => {
           </Box>
         </Flex>
         <Flex
+          mt="3em"
           flexDir="row"
           wrap="wrap-reverse"
           alignItems="center"
@@ -222,24 +230,19 @@ const Home = () => {
             >
               Hit us up
             </Heading>
-            <Flex>
+            <Flex alignItems="center" wrap="wrap">
               {socialMedia.map((socialMedia, index) => {
                 return (
-                  <Box
-                    as={chakra.a}
+                  <chakra.a
+                    key={index}
                     href={socialMedia.url}
                     target="_blank"
-                    key={index}
-                    cursor="pointer"
-                    shadow="lg"
-                    p="2"
-                    border={`1px solid #EDF2F7`}
-                    borderRadius="md"
+                    mr="3"
                   >
                     <Tooltip label={socialMedia.name}>
                       <chakra.img src={socialMedia.logo} width="64px" />
                     </Tooltip>
-                  </Box>
+                  </chakra.a>
                 );
               })}
             </Flex>
