@@ -62,33 +62,35 @@ const Members = ({ members }) => {
             <Text fontSize="2xl">Meet the 2021-2022 members!</Text>
           </SlideFade>
         </Box>
-        <VStack alignItems="flex-end">
-          <Tooltip
-            placement="top-start"
-            label={`Sort name by ${
-              order === "Ascending" ? "descending" : "ascending"
-            } order`}
-          >
-            <IconButton
-              fontSize="2xl"
-              onClick={() => {
-                order === "Ascending"
-                  ? setOrder("Descending")
-                  : setOrder("Ascending");
-              }}
-              icon={
-                order === "Ascending" ? <ImSortAlphaDesc /> : <ImSortAlphaAsc />
-              }
-            />
-          </Tooltip>
-          <Text fontSize="xl">{members.length} total members</Text>
-        </VStack>
+        <SlideFade in={showAnimation.bottomText} dir="bottom">
+          <VStack alignItems="flex-end">
+            <Tooltip
+              placement="top-start"
+              label={`Sort name by ${
+                order === "Ascending" ? "descending" : "ascending"
+              } order`}
+            >
+              <IconButton
+                fontSize="2xl"
+                onClick={() => {
+                  order === "Ascending"
+                    ? setOrder("Descending")
+                    : setOrder("Ascending");
+                }}
+                icon={
+                  order === "Ascending" ? (
+                    <ImSortAlphaDesc />
+                  ) : (
+                    <ImSortAlphaAsc />
+                  )
+                }
+              />
+            </Tooltip>
+            <Text fontSize="xl">{members.length} members</Text>
+          </VStack>
+        </SlideFade>
       </Flex>
-      <Flex
-        justifyContent={["center", "center", "flex-start", "flex-start"]}
-        wrap="wrap"
-        width="100%"
-      >
+      <Flex justifyContent="center" wrap="wrap" width="100%" margin="auto">
         {members
           .sort((a, b) => {
             if (order === "Ascending") {
@@ -109,8 +111,8 @@ const Members = ({ members }) => {
                   width="280px"
                   shadow="xl"
                   overflow="hidden"
-                  mr="3.5em"
                   mb="8"
+                  mx="3.5"
                 >
                   <chakra.img
                     src={member.avatar}
